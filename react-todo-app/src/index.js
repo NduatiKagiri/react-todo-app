@@ -1,11 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+// CLASS BASED
 // component file
-import TodoContainer from './components/TodoContainer';
+// import TodoContainer from './classBased/components/TodoContainer';
+// stylesheets
+// import './classBased/App.css';
 
-// stylesheet
-import './App.css';
+// FUNCTION BASED
+// component file
+import TodoContainer from './functionBased/components/TodoContainer';
+// stylesheets
+import './functionBased/App.css';
 
 ReactDOM.render(
   <React.StrictMode>

@@ -12,6 +12,8 @@ class TodoContainer extends React.Component {
     };
   }
 
+  const todos = this.state;
+
   componentDidMount() {
     const temp = localStorage.getItem('todos');
     const loadedTodos = JSON.parse(temp);
@@ -23,8 +25,8 @@ class TodoContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.todos !== this.state.todos) {
-      const temp = JSON.stringify(this.state.todos);
+    if (prevState.todos !== todos) {
+      const temp = JSON.stringify(todos);
       localStorage.setItem('todos', temp);
     }
   }
@@ -46,7 +48,7 @@ class TodoContainer extends React.Component {
   delTodo = (id) => {
     this.setState({
       todos: [
-        ...this.state.todos.filter((todo) => todo.id !== id),
+        ...todos.filter((todo) => todo.id !== id),
       ],
     });
   };
@@ -58,13 +60,13 @@ class TodoContainer extends React.Component {
       completed: false,
     };
     this.setState({
-      todos: [...this.state.todos, newTodo],
+      todos: [...todos, newTodo],
     });
   };
 
   setUpdate = (updatedTitle, id) => {
     this.setState({
-      todos: this.state.todos.map((todo) => {
+      todos: todos.map((todo) => {
         if (todo.id === id) {
           todo.title = updatedTitle;
         }
@@ -80,7 +82,7 @@ class TodoContainer extends React.Component {
           <Header />
           <InputTodo addTodoProps={this.addTodoItem} />
           <TodosList
-            todos={this.state.todos}
+            todos={todos}
             handleChangeProps={this.handleChange}
             deleteTodoProps={this.delTodo}
             setUpdate={this.setUpdate}
